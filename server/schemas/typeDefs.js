@@ -34,7 +34,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        _id: ID
+        me: User
+    }
     }
 `
 
