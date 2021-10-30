@@ -36,6 +36,18 @@ const resolvers = {
 
             return { token, user };
         },
+        saveBook: async (parent, { authors, description, bookId, image, link, title }, context) => {
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: user._id },
+                    { $addToSet: { savedBooks: body } },
+                    { new: true, runValidators: true }
+                );
+                return updatedUser;
+            } catch (err) {
+                console.log(err);
+            }
+        },
     }
 };
 module.exports = resolvers;
