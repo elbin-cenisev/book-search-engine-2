@@ -8,6 +8,25 @@ const resolvers = {
         }
     },
         
+    Mutation: {
+        login: async () => {
+            const user = await User.findOne({
+                $or: [{ username: username }, { email: email }]
+            });
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            const correctPW = await user.isCorrectPassword(body.password);
+
+            if(!correctPW) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
+        },
     }
 };
 module.exports = resolvers;
