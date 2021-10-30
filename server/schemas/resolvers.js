@@ -4,8 +4,8 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, {email, password}, context) => {
-            if(context.user) {
+        me: async (parent, { email, password }, context) => {
+            if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('savedBooks')
             }
             throw new AuthenticationError("You need to be logged in!");
@@ -18,7 +18,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        login: async (parent, {email, password}) => {
+        login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
             if (!user) {
@@ -27,7 +27,7 @@ const resolvers = {
 
             const correctPW = await user.isCorrectPassword(password);
 
-            if(!correctPW) {
+            if (!correctPW) {
                 throw new AuthenticationError('Incorrect credentials');
             }
 
@@ -48,15 +48,20 @@ const resolvers = {
             }
         },
         removeBook: async (parent, { bookId }, context) => {
-            const updatedUser = await User.findOneAndUpdate(
-                {_id: user._id},
-                { $pull: {savedBooks: {bookId: params.bookId}}},
-                { new: true}
-            );
-            if(!updatedUser) {
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedBooks: { bookId } } },
+                    { new: true }
+                );
+                return updatedUser;
+            } catch (err) {
+                console.log(err)
+            }
+
+            if (!updatedUser) {
                 throw new AuthenticationError("Couldn't find user with this id!");
             }
-            return updatedUser;
         }
     }
 };
