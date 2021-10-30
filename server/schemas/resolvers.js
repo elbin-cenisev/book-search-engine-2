@@ -11,7 +11,7 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in!");
         }
     },
-        
+
     Mutation: {
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
@@ -48,6 +48,17 @@ const resolvers = {
                 console.log(err);
             }
         },
+        removeBook: async (parent, { bookId }, context) => {
+            const updatedUser = await User.findOneAndUpdate(
+                {_id: user._id},
+                { $pull: {savedBooks: {bookId: params.bookId}}},
+                { new: true}
+            );
+            if(!updatedUser) {
+                throw new AuthenticationError("Couldn't find user with this id!");
+            }
+            return updatedUser;
+        }
     }
 };
 module.exports = resolvers;
