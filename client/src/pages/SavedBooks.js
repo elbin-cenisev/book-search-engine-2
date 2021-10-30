@@ -12,6 +12,7 @@ import { removeBookId } from '../utils/localStorage';
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
   const userDataLength = Object.keys(userData).length;
+  console.log(userDataLength);
 
   // use REMOVE_BOOK mutation to remove book from users savedBook
   const [removeBook] = useMutation(REMOVE_BOOK)
@@ -45,6 +46,7 @@ const SavedBooks = () => {
   // if data isn't here yet, say so
   if (!userDataLength) {
     if (!loading) {
+      console.log("Done loading");
       setUserData(data.me);
     }
     return <h2>LOADING...</h2>;
