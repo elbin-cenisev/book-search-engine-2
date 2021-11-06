@@ -10,13 +10,11 @@ Web app that allows users to search for books using Google Search API. Registere
 HTML, CSS, JavaScript, Bootstrap CSS Framework, React, GraphQL, Mongoose, ApolloServer
 
 ## Deployed Link
-https://serene-tundra-63385.herokuapp.com/
+https://sleepy-harbor-68339.herokuapp.com/
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/75343776/139536938-6a233144-1abd-49f1-9b83-b178560b6662.png)
-![image](https://user-images.githubusercontent.com/75343776/139537099-432a7c1b-d7a9-46c6-a3fa-fa8bb2bf5167.png)
-![image](https://user-images.githubusercontent.com/75343776/139537167-e5f5ad57-59bb-4806-970c-a790f091f2c6.png)
-
+![image](https://user-images.githubusercontent.com/75343776/140613093-b7a06781-486f-435e-b405-12694a01ccbb.png)
+![image](https://user-images.githubusercontent.com/75343776/140613120-6773b1b6-970c-46c4-b277-fde3c5399e34.png)
 
 ## License
 MIT License
