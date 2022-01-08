@@ -7,7 +7,7 @@ Author: Elbin Cenisev
 Web app that allows users to search for books using Google Search API. Registered users can save the books onto their profile.
 
 ## Technologies Used
-HTML, CSS, JavaScript, Bootstrap CSS Framework, React, GraphQL, Mongoose, ApolloServer
+HTML, CSS, JavaScript, Bootstrap CSS Framework, GraphQL, Mongoose, ApolloServer
 
 ## Deployed Link
 https://serene-tundra-63385.herokuapp.com/
